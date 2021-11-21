@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.button {
+    @apply font-normal text-white py-2 px-4 rounded m-1 bg-blue-500;
+  }
+.button:hover {
+    @apply bg-blue-700;
+}
+.button:focus {
+    @apply bg-blue-900; 
+    @apply shadow; 
+}

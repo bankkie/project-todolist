@@ -1,19 +1,28 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="flex flex-col">
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/add">Add</router-link>
+    </div>
+    <div>
+      <router-view/>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import { mapActions } from "vuex";
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: "TodoLists",
+  props: {},
+  async created() { 
+    await this.getTodoLists() 
+    //localStorage.setItem('user', 123456789);
+  },
+  methods: {
+    ...mapActions(["getTodoLists"]),
+  },
   }
-}
 </script>
 
 <style>
@@ -23,6 +32,19 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  height: 100vh;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
